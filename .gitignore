@@ -1,0 +1,12 @@
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+node_modules/
+
+# OS junk
+.DS_Store
+Thumbs.db
