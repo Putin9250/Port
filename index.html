@@ -437,7 +437,6 @@ h1 .accent::after{
   padding-bottom:8px;max-width:460px;
 }
 .work-blurb b{color:var(--navy);font-weight:750}
-
 .projects{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -471,7 +470,6 @@ h1 .accent::after{
 @keyframes revealIn{
   to{opacity:1;transform:translateY(0)}
 }
-
 .project-cover{
   position:relative;
   width:100%;
@@ -513,7 +511,6 @@ h1 .accent::after{
   z-index:2;
   pointer-events:none;
 }
-
 .project-body{
   padding:22px 24px 22px;
   display:flex;flex-direction:column;
@@ -612,8 +609,6 @@ h1 .accent::after{
   background:#fff;
   border-color:#DDE7ED;
 }
-
-/* DISCOVER */
 .more-wrap{
   display:flex;
   justify-content:center;
@@ -1157,7 +1152,7 @@ h1 .accent::after{
   <div class="shell main-shell">
     <main id="top">
 
-      <!-- ================= HERO ================= -->
+      <!-- HERO -->
       <section class="hero">
         <div>
           <div class="eyebrow"><span class="dot"></span> Available for web opportunities</div>
@@ -1245,7 +1240,7 @@ h1 .accent::after{
         </div>
       </section>
 
-      <!-- ================= TICKER ================= -->
+      <!-- TICKER -->
       <div class="ticker" aria-hidden="true">
         <div class="ticker-track">
           <span>Frontend Development</span><i>✦</i>
@@ -1267,7 +1262,7 @@ h1 .accent::after{
         </div>
       </div>
 
-      <!-- ================= TECH STACK ================= -->
+      <!-- TECH STACK -->
       <section class="stack" id="stack">
         <div class="stack-head">
           <div>
@@ -1470,7 +1465,7 @@ h1 .accent::after{
         </div>
       </section>
 
-      <!-- ================= WORK ================= -->
+      <!-- WORK -->
       <section class="work" id="work">
         <div class="kicker">Work</div>
 
@@ -1482,8 +1477,6 @@ h1 .accent::after{
         </div>
 
         <div class="projects" id="projectGrid">
-
-          <!-- ============ VISIBLE ============ -->
 
           <article class="project" style="--c:#31B4EC">
             <div class="project-cover">
@@ -1552,8 +1545,6 @@ h1 .accent::after{
               </div>
             </div>
           </article>
-
-          <!-- ============ HIDDEN ============ -->
 
           <article class="project hidden" style="--c:#FBAF05">
             <div class="project-cover">
@@ -1674,7 +1665,7 @@ h1 .accent::after{
         </div>
       </section>
 
-      <!-- ================= ABOUT ================= -->
+      <!-- ABOUT -->
       <section class="about" id="about">
         <div class="kicker">About</div>
         <div class="about-top">
@@ -1738,7 +1729,7 @@ h1 .accent::after{
         </div>
       </section>
 
-      <!-- ================= CONTACT ================= -->
+      <!-- CONTACT -->
       <section class="contact" id="contact">
         <div class="kicker">Contact</div>
 
@@ -1859,11 +1850,28 @@ h1 .accent::after{
   <button class="toast-close" id="toastClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
 </div>
 
+<!-- =====================================================================
+     ⚠️  REPLACE THESE THREE VALUES WITH YOUR REAL EMAILJS CREDENTIALS
+     =====================================================================
+     Get them from https://dashboard.emailjs.com/
+       • Public Key  → Account → General
+       • Service ID  → Email Services → your service
+       • Template ID → Email Templates → your template
+
+     Keep the quotes. Just replace the text between them.
+     Example (yours will look different):
+       EMAILJS_PUBLIC_KEY:  "p6OR3xZ0AbCdEfGh"
+       EMAILJS_SERVICE_ID:  "service_xj74ggc"
+       EMAILJS_TEMPLATE_ID: "template_pvfbomn"
+
+     Your EmailJS template must use these variable names:
+       {{name}}   {{email}}   {{phone}}   {{message}}
+     ===================================================================== -->
 <script>
   window.__ENV__ = {
-    EMAILJS_PUBLIC_KEY:  "__EMAILJS_PUBLIC_KEY__",
-    EMAILJS_SERVICE_ID:  "__EMAILJS_SERVICE_ID__",
-    EMAILJS_TEMPLATE_ID: "__EMAILJS_TEMPLATE_ID__"
+    EMAILJS_PUBLIC_KEY:  "p6OR3xZ0afJ3-rpu1",
+    EMAILJS_SERVICE_ID:  "service_xj74ggc",
+    EMAILJS_TEMPLATE_ID: "template_pvfbomn"
   };
 </script>
 
@@ -2031,7 +2039,7 @@ h1 .accent::after{
     });
   }
 
-  /* ================= WORK — DISCOVER ALL ================= */
+  /* ================= WORK — DISCOVER ================= */
   var grid    = document.getElementById('projectGrid');
   var moreBtn = document.getElementById('moreBtn');
   var moreWrap= document.getElementById('moreWrap');
