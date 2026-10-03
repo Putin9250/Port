@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Sahil Kumar</title>
+<style>
+:root{
+  --navy:#1A2E46;--navy2:#111F30;--white:#FEFEFE;--soft:#F5F7F8;--black:#030303;
+  --muted:#68717B;--border:#E1E7EC;--cyan:#31B4EC;--yellow:#F7CB5D;--gold:#FBAF05;--green:#2DA94B;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--black);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  background:
+    radial-gradient(circle at 10% 8%,rgba(49,180,236,.13),transparent 24%),
+    radial-gradient(circle at 90% 10%,rgba(247,203,93,.15),transparent 22%),
+    radial-gradient(circle at 78% 72%,rgba(49,180,236,.07),transparent 25%),
+    linear-gradient(135deg,#fff 0%,#f8fafb 55%,#f1f5f7 100%);
+  min-height:100vh;
+  overflow-x:clip;
+}
+a{text-decoration:none;color:inherit}
+.shell{width:calc(100% - 120px);max-width:1720px;margin:0 auto;position:relative;z-index:2}
+
+.about{padding:80px 0 60px;position:relative}
+
+.kicker{
+  color:var(--cyan);font-size:12px;font-weight:900;
+  text-transform:uppercase;letter-spacing:.18em;margin-bottom:16px;
+}
+
+/* ===================== TOP ===================== */
+.about-top{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:80px;
+  align-items:end;
+  margin-bottom:60px;
+}
+.about-top h2{
+  margin:0;
+  color:var(--navy);
+  font-size:clamp(34px,3.8vw,60px);
+  font-weight:800;letter-spacing:-.05em;line-height:1.04;
+}
+.about-top h2 em{font-style:normal;color:var(--muted);font-weight:700}
+.about-top h2 .hl{position:relative;display:inline-block;z-index:0}
+.about-top h2 .hl::after{
+  content:"";position:absolute;left:-2%;right:-3%;bottom:6%;height:28%;border-radius:20px;
+  background:linear-gradient(90deg,var(--yellow),rgba(247,203,93,.22));
+  z-index:-1;transform:rotate(-1deg);
+}
+
+.about-bio{
+  color:var(--muted);font-size:16px;line-height:1.8;font-weight:450;
+  padding-bottom:8px;max-width:460px;
+}
+.about-bio b{color:var(--navy);font-weight:750}
+
+/* ===================== FACTS ===================== */
+.fact-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:64px;
+}
+.fact{
+  padding:22px 24px 20px;
+  border-radius:20px;
+  background:#ffffff;
+  border:1px solid #EAF0F4;
+  box-shadow:0 18px 40px -22px rgba(17,31,48,.1);
+  position:relative;overflow:hidden;
+  transition:transform .28s cubic-bezier(.4,0,.2,1),box-shadow .28s ease;
+}
+.fact:hover{
+  transform:translateY(-4px);
+  box-shadow:0 28px 56px -24px rgba(17,31,48,.16);
+}
+.fact::before{
+  content:"";position:absolute;left:24px;right:24px;top:0;height:2px;
+  border-radius:2px;background:var(--c,var(--cyan));opacity:.7;
+}
+.fact-lbl{
+  font-size:10.5px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:12px;
+}
+.fact-val{
+  font-size:16.5px;font-weight:850;color:var(--navy);letter-spacing:-.02em;
+  line-height:1.28;
+}
+.fact-val small{
+  display:block;font-size:12px;font-weight:600;color:var(--muted);
+  letter-spacing:0;margin-top:6px;
+}
+
+/* ===================== EXPERIENCE ===================== */
+.exp-head{
+  display:flex;align-items:center;gap:20px;
+  margin-bottom:28px;
+}
+.exp-head h3{
+  margin:0;font-size:20px;font-weight:850;color:var(--navy);
+  letter-spacing:-.03em;white-space:nowrap;
+}
+.exp-head h3 em{font-style:normal;color:var(--muted);font-weight:700}
+.exp-line{flex:1;height:1px;background:linear-gradient(90deg,rgba(26,46,70,.14),transparent)}
+
+.exp-list{display:flex;flex-direction:column;gap:12px}
+
+.exp-row{
+  display:grid;
+  grid-template-columns:64px 1fr auto;
+  gap:24px;
+  align-items:center;
+  padding:22px 26px;
+  border-radius:22px;
+  background:#ffffff;
+  border:1px solid #EAF0F4;
+  box-shadow:0 18px 40px -24px rgba(17,31,48,.1);
+  transition:transform .28s cubic-bezier(.4,0,.2,1),box-shadow .28s ease,border-color .28s ease;
+  position:relative;
+}
+.exp-row:hover{
+  transform:translateY(-3px);
+  box-shadow:0 28px 56px -26px rgba(17,31,48,.16);
+  border-color:#DDE7ED;
+}
+.exp-row.current{
+  border-color:rgba(49,180,236,.32);
+  background:linear-gradient(145deg,#ffffff,#F7FAFC);
+}
+.exp-row.current::before{
+  content:"";position:absolute;left:0;top:22px;bottom:22px;width:3px;
+  border-radius:3px;
+  background:linear-gradient(180deg,var(--cyan),rgba(49,180,236,.08));
+}
+
+.exp-logo{
+  width:64px;height:64px;border-radius:18px;
+  display:grid;place-items:center;flex:0 0 64px;
+  background:#F7FAFC;
+  border:1px solid #EAF0F4;
+  overflow:hidden;padding:8px;
+}
+.exp-logo svg{width:100%;height:100%;display:block}
+
+/* The Night Marketer — dark background for the new logo */
+.exp-logo.tnm{
+  background:#0F1B2A;
+  border-color:#1A2E46;
+  padding:5px;
+}
+.exp-logo.tnm img{
+  width:100%;height:100%;object-fit:contain;display:block;
+}
+
+/* SourceFuse — light green tint */
+.exp-logo.sf{background:rgba(124,189,64,.08);border-color:rgba(124,189,64,.2);padding:10px}
+/* Edunet — clean white */
+.exp-logo.en{background:#ffffff;border-color:#EAF0F4;padding:9px}
+
+.exp-details{min-width:0}
+.exp-role{
+  font-size:16px;font-weight:850;color:var(--navy);
+  letter-spacing:-.02em;line-height:1.25;
+  margin-bottom:6px;
+}
+.exp-company{
+  font-size:13px;font-weight:600;color:var(--muted);
+  display:flex;align-items:center;gap:8px;margin-bottom:8px;
+  flex-wrap:wrap;
+}
+.exp-company .co-name{color:var(--navy);font-weight:750}
+.exp-company i{
+  width:4px;height:4px;border-radius:50%;background:rgba(26,46,70,.22);
+  flex:0 0 4px;
+}
+.exp-note{
+  font-size:13.5px;font-weight:500;color:var(--muted);line-height:1.5;
+  letter-spacing:-.005em;
+}
+
+.exp-dates{
+  display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex:0 0 auto;
+}
+.exp-date{
+  padding:8px 14px;border-radius:999px;
+  background:#F7FAFC;border:1px solid #EDF2F6;
+  font-size:11.5px;font-weight:800;color:var(--navy);
+  white-space:nowrap;letter-spacing:-.005em;
+}
+.exp-row.current .exp-date{
+  background:rgba(49,180,236,.1);
+  border-color:rgba(49,180,236,.24);
+  color:#1a7ba0;
+}
+.exp-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:5px 11px;border-radius:999px;
+  background:rgba(45,169,75,.12);
+  border:1px solid rgba(45,169,75,.24);
+  font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+  color:#1d7a36;white-space:nowrap;
+}
+.exp-badge i{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(45,169,75,.15)}
+
+/* ===================== RESPONSIVE ===================== */
+@media(max-width:1300px){
+  .shell{width:calc(100% - 80px)}
+}
+@media(max-width:1199px){
+  .about-top{grid-template-columns:1fr;gap:26px;margin-bottom:48px}
+  .about-bio{max-width:640px}
+}
+@media(max-width:899px){
+  .shell{width:calc(100% - 48px)}
+  .about{padding:60px 0 40px}
+  .fact-strip{grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:48px}
+  .exp-row{grid-template-columns:56px 1fr;gap:18px;padding:20px 22px}
+  .exp-logo{width:56px;height:56px;flex:0 0 56px;border-radius:16px}
+  .exp-dates{
+    grid-column:1 / -1;
+    flex-direction:row;align-items:center;justify-content:space-between;
+    width:100%;margin-top:6px;
+  }
+}
+@media(max-width:768px){
+  .about-top h2{font-size:34px}
+  .about-bio{font-size:15px}
+}
+@media(max-width:479px){
+  .shell{width:calc(100% - 32px)}
+  .about-top h2{font-size:28px}
+  .fact{padding:18px 18px 16px;border-radius:16px}
+  .fact-val{font-size:15px}
+  .exp-row{padding:18px 18px;border-radius:18px;gap:16px}
+  .exp-logo{width:48px;height:48px;flex:0 0 48px;border-radius:14px;padding:6px}
+  .exp-role{font-size:15px}
+  .exp-note{font-size:12.5px}
+}
+
+/* ---- below 400px: stack company name & location ---- */
+@media(max-width:400px){
+  .exp-company{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:3px;
+    margin-bottom:10px;
+  }
+  .exp-company i{display:none;}
+  .exp-company .co-name,
+  .exp-company .co-loc{
+    display:block;
+    line-height:1.4;
+  }
+  .exp-company .co-loc{
+    font-size:11.5px;
+    color:var(--muted);
+    font-weight:600;
+  }
+  .exp-row{padding:16px 14px;gap:12px;border-radius:16px}
+  .exp-logo{width:44px;height:44px;flex:0 0 44px;border-radius:12px;padding:5px}
+  .exp-role{font-size:14.5px;margin-bottom:4px}
+  .exp-note{font-size:12px;line-height:1.45}
+  .exp-date{font-size:10.5px;padding:6px 10px}
+  .exp-badge{font-size:9px;padding:4px 9px}
+  .fact{padding:16px 14px 14px;border-radius:14px}
+  .fact-val{font-size:14px}
+  .fact-val small{font-size:11px}
+  .about-top h2{font-size:26px}
+  .about-bio{font-size:14.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <section class="about" id="about">
+
+    <div class="kicker">About</div>
+
+    <div class="about-top">
+      <h2>I build things that <em>hold up</em> when you <span class="hl">look closely.</span></h2>
+      <p class="about-bio">
+        A web developer focused on <b>frontend work</b>, <b>e-commerce</b>, and keeping existing projects clean and consistent. I like turning rough ideas into pages that feel finished.
+      </p>
+    </div>
+
+    <div class="fact-strip">
+      <div class="fact" style="--c:#31B4EC">
+        <div class="fact-lbl">Focus</div>
+        <div class="fact-val">Frontend &amp; E-commerce<small>Interfaces, themes, APIs</small></div>
+      </div>
+      <div class="fact" style="--c:#F7CB5D">
+        <div class="fact-lbl">Learning</div>
+        <div class="fact-val">Backend depth<small>Going beyond the surface</small></div>
+      </div>
+      <div class="fact" style="--c:#2DA94B">
+        <div class="fact-lbl">Based in</div>
+        <div class="fact-val">New Delhi<small>Open to remote work</small></div>
+      </div>
+      <div class="fact" style="--c:#FBAF05">
+        <div class="fact-lbl">Off-screen</div>
+        <div class="fact-val">MMA &amp; Fighting<small>Practising, always</small></div>
+      </div>
+    </div>
+
+    <div class="exp-head">
+      <h3>Experience <em>- where I've worked</em></h3>
+      <div class="exp-line"></div>
+    </div>
+
+    <div class="exp-list">
+
+      <article class="exp-row current">
+        <div class="exp-logo tnm">
+          <img src="https://thenightmarketer.com/images/tnm-logo-new.png" alt="The Night Marketer logo" loading="lazy" draggable="false" onerror="this.parentElement.style.background='#111F30'; this.parentElement.innerHTML='<svg viewBox=\'0 0 100 100\' xmlns=\'http://www.w3.org/2000/svg\' aria-hidden=\'true\'><path d=\'M 68 20 q -6 -4 -10 0 q -4 -2 -7 1 q -3 2 -2 6 q 0 4 5 5 q 3 2 8 1 q 5 1 8 -2 q 4 -2 3 -6 q 0 -4 -5 -5 z\' fill=\'none\' stroke=\'#7EC8D6\' stroke-width=\'2\' stroke-linejoin=\'round\'/><circle cx=\'54\' cy=\'36\' r=\'1.8\' fill=\'#7EC8D6\'/><circle cx=\'50\' cy=\'40\' r=\'1.2\' fill=\'#7EC8D6\'/><circle cx=\'47\' cy=\'43\' r=\'0.8\' fill=\'#7EC8D6\'/><ellipse cx=\'33\' cy=\'34\' rx=\'7\' ry=\'7.5\' fill=\'none\' stroke=\'#FFFFFF\' stroke-width=\'2.2\'/><path d=\'M 33 42 Q 32 55 30 66 Q 28 74 26 80\' fill=\'none\' stroke=\'#FFFFFF\' stroke-width=\'2.4\' stroke-linecap=\'round\'/><path d=\'M 32 50 L 45 43\' fill=\'none\' stroke=\'#FFFFFF\' stroke-width=\'2.4\' stroke-linecap=\'round\'/><path d=\'M 31 53 L 20 60\' fill=\'none\' stroke=\'#FFFFFF\' stroke-width=\'2.4\' stroke-linecap=\'round\'/><path d=\'M 26 80 L 15 90\' fill=\'none\' stroke=\'#FFFFFF\' stroke-width=\'2.4\' stroke-linecap=\'round\'/><path d=\'M 26 80 L 42 87\' fill=\'none\' stroke=\'#FFFFFF\' stroke-width=\'2.4\' stroke-linecap=\'round\'/><circle cx=\'49\' cy=\'39\' r=\'4\' fill=\'#F7CB5D\'/><rect x=\'47.3\' y=\'42.5\' width=\'3.4\' height=\'2.6\' rx=\'0.8\' fill=\'#F7CB5D\'/><path d=\'M 49 32 v -2.5 M 55 34 l 1.8 -1.8 M 43 34 l -1.8 -1.8 M 56 39 h 2.5 M 42 39 h -2.5\' stroke=\'#F7CB5D\' stroke-width=\'1.4\' stroke-linecap=\'round\'/></svg>'">
+        </div>
+        <div class="exp-details">
+          <div class="exp-role">Frontend Developer</div>
+          <div class="exp-company">
+            <span class="co-name">The Night Marketer</span>
+            <i></i>
+            <span class="co-loc">New Delhi, India</span>
+          </div>
+          <div class="exp-note">Building and refining frontend for live client projects.</div>
+        </div>
+        <div class="exp-dates">
+          <span class="exp-badge"><i></i>Current</span>
+          <span class="exp-date">07/2026 - Present</span>
+        </div>
+      </article>
+
+      <article class="exp-row">
+        <div class="exp-logo sf">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="SourceFuse">
+            <path d="M 22 20 L 52 50 L 22 80 L 34 80 L 64 50 L 34 20 Z" fill="#7CBD40"/>
+            <path d="M 44 20 L 74 50 L 44 80 L 56 80 L 86 50 L 56 20 Z" fill="#7CBD40" opacity=".55"/>
+          </svg>
+        </div>
+        <div class="exp-details">
+          <div class="exp-role">Cloud Practitioner Essentials</div>
+          <div class="exp-company">
+            <span class="co-name">SourceFuse</span>
+            <i></i>
+            <span class="co-loc">New Delhi, India</span>
+          </div>
+          <div class="exp-note">Hands-on cloud fundamentals - deployment, security, scalability.</div>
+        </div>
+        <div class="exp-dates">
+          <span class="exp-date">03/2024 - 08/2024</span>
+        </div>
+      </article>
+
+      <article class="exp-row">
+        <div class="exp-logo en">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Edunet Foundation">
+            <text x="50" y="52" text-anchor="middle"
+                  font-family="Helvetica, Arial, sans-serif"
+                  font-size="26" font-weight="700"
+                  letter-spacing="-0.5">
+              <tspan fill="#1E3A5F">edun</tspan><tspan fill="#8B1A1A">et</tspan>
+            </text>
+            <text x="50" y="76" text-anchor="middle"
+                  font-family="Helvetica, Arial, sans-serif"
+                  font-size="14" font-weight="400"
+                  fill="#8A8A8A">foundation</text>
+          </svg>
+        </div>
+        <div class="exp-details">
+          <div class="exp-role">Employability Skills Program</div>
+          <div class="exp-company">
+            <span class="co-name">Edunet Foundation</span>
+            <i></i>
+            <span class="co-loc">New Delhi, India</span>
+          </div>
+          <div class="exp-note">Workplace readiness - communication, collaboration, problem-solving.</div>
+        </div>
+        <div class="exp-dates">
+          <span class="exp-date">09/2023 - 03/2024</span>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+</div>
+
+</body>
+</html>
