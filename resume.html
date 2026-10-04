@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahil Kumar — Resume</title>
+    <style>
+        /* No @page margin — this removes the space Chrome uses to draw the date/title header */
+        @page {
+            size: A4;
+            margin: 16mm 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            font-family: 'Calibri', 'Carlito', 'Helvetica Neue', Arial, sans-serif;
+            background: #e8eaed;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
+            font-size: 11.5px;
+            line-height: 1.35;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 24px 12px 100px;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #fff;
+            padding: 16mm 14mm;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, .15);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ================= HEADER ================= */
+        .header {
+            text-align: center;
+            padding-bottom: 7px;
+            margin-bottom: 9px;
+            border-bottom: 1.5px solid #1a1a1a;
+        }
+
+        .name {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: .06em;
+            color: #111;
+        }
+
+        .title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 3px;
+            letter-spacing: .01em;
+        }
+
+        .contact {
+            font-size: 11px;
+            color: #333;
+            margin-top: 6px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 7px;
+            align-items: center;
+        }
+
+        .contact a {
+            color: #1a56c4;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(26, 86, 196, .35);
+            padding-bottom: .5px;
+            transition: color .15s ease, border-color .15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .contact a:hover {
+            color: #0f3a8a;
+            border-bottom-color: #0f3a8a;
+        }
+
+        .contact a::after {
+            content: "↗";
+            font-size: 9.5px;
+            opacity: .6;
+            line-height: 1;
+        }
+
+        .contact .sep {
+            color: #aaa;
+        }
+
+        .contact .plain {
+            color: #333;
+        }
+
+        /* ================= SECTION ================= */
+        .section {
+            margin-bottom: 9px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 800;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: .13em;
+            color: #111;
+            padding-bottom: 3px;
+            margin-bottom: 7px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        /* ================= SUMMARY ================= */
+        .summary-text {
+            font-size: 11.5px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* ================= SKILLS ================= */
+        .skills {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .skills-row {
+            display: flex;
+            gap: 8px;
+            font-size: 11.5px;
+            align-items: baseline;
+        }
+
+        .skills-lbl {
+            font-weight: 700;
+            color: #111;
+            min-width: 150px;
+            flex: 0 0 150px;
+        }
+
+        .skills-val {
+            color: #333;
+        }
+
+        .skills-row.familiar .skills-lbl {
+            color: #555;
+        }
+
+        .skills-row.familiar .skills-val {
+            color: #666;
+            font-style: italic;
+        }
+
+        /* ================= ENTRY ================= */
+        .entry {
+            margin-bottom: 7px;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+        .entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .entry-head .loc {
+            font-weight: 600;
+            color: #333;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        .entry-role {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 11.5px;
+            color: #333;
+            font-style: italic;
+            margin-top: 1px;
+        }
+
+        .entry-role .date {
+            color: #555;
+            font-style: normal;
+            white-space: nowrap;
+        }
+
+        .entry-list {
+            list-style: none;
+            padding: 0;
+            margin: 3px 0 0 0;
+            font-size: 11.5px;
+            color: #333;
+        }
+
+        .entry-list li {
+            position: relative;
+            padding-left: 13px;
+            margin-bottom: 1.5px;
+            line-height: 1.5;
+        }
+
+        .entry-list li::before {
+            content: "•";
+            position: absolute;
+            left: 2px;
+            top: 0;
+            color: #444;
+            font-size: 12.5px;
+            line-height: 1.3;
+        }
+
+        .entry-list strong {
+            color: #111;
+            font-weight: 700;
+        }
+
+        /* ================= PROJECTS ================= */
+        .proj-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #111;
+            margin-top: 2px;
+        }
+
+        .proj-head .meta {
+            font-weight: 600;
+            color: #555;
+            font-size: 11px;
+            font-style: italic;
+            white-space: nowrap;
+        }
+
+        .proj-role {
+            font-size: 11.5px;
+            color: #333;
+            margin-top: 1px;
+        }
+
+        .proj-role .url {
+            color: #666;
+            font-style: italic;
+        }
+
+        /* ================= CERTIFICATIONS ================= */
+        .cert-line {
+            font-size: 11.5px;
+            color: #333;
+            position: relative;
+            padding-left: 13px;
+            line-height: 1.5;
+            margin-bottom: 1.5px;
+        }
+
+        .cert-line::before {
+            content: "•";
+            position: absolute;
+            left: 2px;
+            top: 0;
+            color: #444;
+            font-size: 12.5px;
+            line-height: 1.3;
+        }
+
+        /* ================= DOWNLOAD BUTTON ================= */
+        .download-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 999;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 999px;
+            background: rgba(20, 20, 20, .92);
+            backdrop-filter: blur(14px) saturate(180%);
+            -webkit-backdrop-filter: blur(14px) saturate(180%);
+            color: #fff;
+            font-family: inherit;
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: -.005em;
+            border: 1px solid rgba(255, 255, 255, .12);
+            cursor: pointer;
+            box-shadow:
+                0 20px 45px -12px rgba(0, 0, 0, .45),
+                0 4px 12px -2px rgba(0, 0, 0, .25),
+                inset 0 1px 0 rgba(255, 255, 255, .14);
+            transition: transform .22s cubic-bezier(.4, 0, .2, 1), box-shadow .22s ease, background .22s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(20, 20, 20, 1);
+            box-shadow:
+                0 26px 55px -14px rgba(0, 0, 0, .55),
+                0 6px 16px -3px rgba(0, 0, 0, .3),
+                inset 0 1px 0 rgba(255, 255, 255, .18);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        .download-btn svg {
+            width: 17px;
+            height: 17px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex: 0 0 17px;
+        }
+
+        .download-btn .label {
+            white-space: nowrap;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media screen and (max-width: 850px) {
+            body {
+                padding: 16px 10px 100px;
+            }
+
+            .page {
+                width: 100%;
+                max-width: 100%;
+                min-height: auto;
+                padding: 26px 22px;
+                margin: 0;
+            }
+
+            .entry-head,
+            .entry-role,
+            .proj-head {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+            }
+
+            .entry-head .loc,
+            .entry-role .date,
+            .proj-head .meta {
+                white-space: normal;
+                font-size: 10.5px;
+            }
+
+            .skills-row {
+                gap: 8px;
+            }
+
+            .skills-lbl {
+                min-width: 130px;
+                flex: 0 0 130px;
+            }
+
+            .contact {
+                gap: 6px;
+                font-size: 10.5px;
+            }
+
+            .name {
+                font-size: 23px;
+            }
+
+            .title {
+                font-size: 11px;
+            }
+
+            .section-title {
+                font-size: 12px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 12px 8px 84px;
+            }
+
+            .page {
+                padding: 22px 18px;
+            }
+
+            .name {
+                font-size: 21px;
+            }
+
+            .title {
+                font-size: 10.5px;
+            }
+
+            .section {
+                margin-bottom: 11px;
+            }
+
+            .section-title {
+                font-size: 11.5px;
+                margin-bottom: 8px;
+            }
+
+            .skills-row {
+                flex-direction: column;
+                gap: 1px;
+            }
+
+            .skills-lbl {
+                min-width: 0;
+                flex: 0 0 auto;
+                font-size: 11px;
+            }
+
+            .skills-val {
+                font-size: 11px;
+            }
+
+            .summary-text,
+            .entry-list,
+            .cert-line,
+            .entry-role,
+            .proj-role {
+                font-size: 11px;
+            }
+
+            .entry-head,
+            .proj-head {
+                font-size: 12px;
+            }
+
+            .download-btn {
+                bottom: 16px;
+                right: 16px;
+                padding: 12px 16px;
+                gap: 0;
+            }
+
+            .download-btn .label {
+                display: none;
+            }
+
+            .download-btn svg {
+                width: 19px;
+                height: 19px;
+                flex: 0 0 19px;
+            }
+        }
+
+        /* ================= PRINT ================= */
+        @media print {
+
+            html,
+            body {
+                background: #fff;
+                padding: 0;
+                margin: 0;
+                font-size: 11px;
+                line-height: 1.34;
+            }
+
+            body {
+                display: block;
+            }
+
+            .page {
+                width: 210mm !important;
+                max-width: none !important;
+                min-height: auto;
+                margin: 0 !important;
+                padding: 0mm 14mm !important;
+                box-shadow: none !important;
+            }
+
+            .download-btn {
+                display: none !important;
+            }
+
+            .contact a {
+                color: #333;
+                border-bottom: none;
+            }
+
+            .contact a::after {
+                content: none;
+            }
+
+            .entry,
+            .section-title,
+            .skills-row,
+            .cert-line {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .header {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+
+            .section-title {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="download-btn" onclick="window.print()" aria-label="Download resume as PDF">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v12M7 11l5 5 5-5M5 21h14" />
+        </svg>
+        <span class="label">Download PDF</span>
+    </button>
+
+    <div class="page">
+
+        <!-- ================= HEADER ================= -->
+        <header class="header">
+            <div class="name">SAHIL KUMAR</div>
+            <div class="title">Web Developer | Front-End Developer | Website Maintenance</div>
+            <div class="contact">
+                <span class="plain">+91 9582 5862 00</span>
+                <span class="sep">•</span>
+                <a href="mailto:uttamwebsolution@gmail.com">uttamwebsolution@gmail.com</a>
+                <span class="sep">•</span>
+                <a href="https://putin9250.github.io/Port/" target="_blank" rel="noopener">Portfolio</a>
+                <span class="sep">•</span>
+                <a href="https://github.com/Putin9250" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </header>
+
+        <!-- ================= SUMMARY ================= -->
+        <section class="section">
+            <div class="section-title">Summary</div>
+            <p class="summary-text">
+                Web Developer with hands-on experience in frontend development, e-commerce, and website maintenance.
+                Experienced in building responsive interfaces, working with APIs, customizing existing web projects, and
+                improving code structure and functionality.
+            </p>
+        </section>
+
+        <!-- ================= SKILLS ================= -->
+        <section class="section">
+            <div class="section-title">Skills</div>
+            <div class="skills">
+                <div class="skills-row">
+                    <span class="skills-lbl">Frontend</span>
+                    <span class="skills-val">React · JavaScript · Tailwind CSS · SCSS · Vanilla CSS · HTML5</span>
+                </div>
+                <div class="skills-row">
+                    <span class="skills-lbl">CMS &amp; Storefronts</span>
+                    <span class="skills-val">Shopify · Liquid</span>
+                </div>
+                <div class="skills-row">
+                    <span class="skills-lbl">Backend &amp; APIs</span>
+                    <span class="skills-val">Node.js · Express · REST APIs</span>
+                </div>
+                <div class="skills-row">
+                    <span class="skills-lbl">Cloud &amp; Deploy</span>
+                    <span class="skills-val">AWS · Render · Netlify · Vercel · Hostinger · GitHub Pages</span>
+                </div>
+                <div class="skills-row">
+                    <span class="skills-lbl">Tools &amp; AI</span>
+                    <span class="skills-val">Git · GitHub · Postman · Hoppscotch · Claude · ChatGPT · DeepSeek</span>
+                </div>
+                <div class="skills-row familiar">
+                    <span class="skills-lbl">Working knowledge</span>
+                    <span class="skills-val">PHP · Laravel (Blade) · MongoDB · Strapi · MySQL</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= EXPERIENCE ================= -->
+        <section class="section">
+            <div class="section-title">Experience</div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <span>The Night Marketer</span>
+                    <span class="loc">New Delhi, India</span>
+                </div>
+                <div class="entry-role">
+                    <span>Junior Frontend Developer</span>
+                    <span class="date">07/2024 – Present</span>
+                </div>
+                <ul class="entry-list">
+                    <li>Worked on <strong>Shopify-based e-commerce projects</strong>, implementing UI changes, theme
+                        customizations, and website maintenance.</li>
+                    <li>Used <strong>Git/GitHub</strong> for version control and collaborative development.</li>
+                    <li>Worked with <strong>PHP and Laravel/Blade</strong> to modify and maintain existing web
+                        applications.</li>
+                    <li><strong>Refactored and cleaned up existing codebases</strong>, improving code structure,
+                        maintainability, and consistency across frontend components and styles.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <span>Parahittech</span>
+                    <span class="loc">New Delhi, India</span>
+                </div>
+                <div class="entry-role">
+                    <span>Field Associate Intern — Data &amp; Campaign Operations</span>
+                    <span class="date">12/2024 – 02/2025</span>
+                </div>
+                <ul class="entry-list">
+                    <li>Managed and maintained <strong>survey and campaign data</strong> using spreadsheets, ensuring
+                        accurate and organized records.</li>
+                    <li>Maintained data accuracy and consolidated information from multiple sources.</li>
+                    <li>Analyzed survey responses and prepared <strong>daily reports and data summaries</strong>.</li>
+                    <li>Participated in campaign activities and coordinated with field teams.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <span>SourceFuse</span>
+                    <span class="loc">New Delhi, India</span>
+                </div>
+                <div class="entry-role">
+                    <span>Cloud Masterclass — Cloud Practitioner Essentials</span>
+                    <span class="date">03/2024 – 08/2024</span>
+                </div>
+                <ul class="entry-list">
+                    <li>Hands-on exposure to <strong>EC2, S3, RDS, IAM and Lambda</strong>, with foundational knowledge
+                        of cloud deployment, security and scalability.</li>
+                    <li>Explored best practices for cloud <strong>cost management, scalability, and security</strong>.
+                    </li>
+                    <li>Learnt core concepts of cloud computing including compute, storage, networking, security and
+                        <strong>Virtual Machines on AWS</strong>.</li>
+                    <li>Gained exposure to real-world cloud use cases and industry applications.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <span>Edunet Foundation</span>
+                    <span class="loc">New Delhi, India</span>
+                </div>
+                <div class="entry-role">
+                    <span>Skill Saksham (Employability Skills), Microsoft</span>
+                    <span class="date">09/2023 – 03/2024</span>
+                </div>
+                <ul class="entry-list">
+                    <li>Completed an apprenticeship on <strong>employability and workplace skills</strong>.</li>
+                    <li>Developed skills in <strong>professional communication, teamwork, problem-solving</strong>, and
+                        workplace collaboration.</li>
+                    <li>Participated in practical activities focused on workplace readiness and professional
+                        development.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ================= EDUCATION ================= -->
+        <section class="section">
+            <div class="section-title">Education</div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <span>Delhi University</span>
+                    <span class="loc">New Delhi, India</span>
+                </div>
+                <div class="entry-role">
+                    <span>BA (Hons.) Political Science</span>
+                    <span class="date">08/2023 – Present</span>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="entry-head">
+                    <span>ITI Pusa</span>
+                    <span class="loc">New Delhi, India</span>
+                </div>
+                <div class="entry-role">
+                    <span>Computer Operator &amp; Programming Assistant</span>
+                    <span class="date">07/2023 – 07/2024</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PROJECTS ================= -->
+        <section class="section">
+            <div class="section-title">Projects</div>
+
+            <div class="entry">
+                <div class="proj-head">
+                    <span>Shiv Exa Lights</span>
+                    <span class="meta">MERN · Freelance</span>
+                </div>
+                <div class="proj-role">Full-stack e-commerce platform <span class="url">· shivexalights.in</span></div>
+                <ul class="entry-list">
+                    <li>Built a full-stack e-commerce platform with <strong>React</strong> frontend,
+                        <strong>Node/Express</strong> backend, and <strong>MongoDB Atlas</strong> for application data.
+                    </li>
+                    <li>Integrated <strong>Clerk</strong> for authentication, <strong>Razorpay</strong> for payments,
+                        and <strong>Cloudinary</strong> for product-image storage and delivery.</li>
+                    <li>Implemented product, cart, and wishlist functionality along with frontend/backend API
+                        integration.</li>
+                    <li>Deployed the backend on <strong>Render</strong>; handled filtering, inventory handling, and
+                        order workflows.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="proj-head">
+                    <span>Startup Movers</span>
+                    <span class="meta">The Night Marketer</span>
+                </div>
+                <div class="proj-role">Laravel web application <span class="url">· startup-movers.com</span></div>
+                <ul class="entry-list">
+                    <li>Worked on an existing <strong>Laravel</strong> application across frontend, admin panel, and
+                        content management.</li>
+                    <li>Implemented new sections and pages; modified existing layouts and extended admin functionality.
+                    </li>
+                    <li>Handled content-related features, ongoing fixes, and UI changes based on project requirements.
+                    </li>
+                    <li>Logged <strong>41+ hours of additional work</strong> on ongoing changes and refinements.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="proj-head">
+                    <span>Coco Stays Goa</span>
+                    <span class="meta">The Night Marketer</span>
+                </div>
+                <div class="proj-role">PHP booking site <span class="url">· cocostaysgoa.com</span></div>
+                <ul class="entry-list">
+                    <li>Built the website from scratch in <strong>PHP</strong> including the frontend and the admin
+                        workflow for villa management.</li>
+                    <li>Developed admin panel for villa details with dynamic rendering on the public-facing site.</li>
+                    <li>Covered PHP application structure, frontend, admin-panel functionality, and ongoing debugging.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="proj-head">
+                    <span>Eriya Developers</span>
+                    <span class="meta">The Night Marketer</span>
+                </div>
+                <div class="proj-role">Shopify theme customization <span class="url">· eiryadevelopers.com</span></div>
+                <ul class="entry-list">
+                    <li>Customized the Shopify theme and frontend of an existing store.</li>
+                    <li>Modified <strong>Liquid</strong>, CSS, and JavaScript for UI and layout changes; troubleshot
+                        theme issues.</li>
+                    <li>Used AI-assisted development with senior review to implement theme-level changes.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <div class="proj-head">
+                    <span>SeaCube Logistics</span>
+                    <span class="meta">The Night Marketer</span>
+                </div>
+                <div class="proj-role">Business landing site <span class="url">· seacubelogistics.com</span></div>
+                <ul class="entry-list">
+                    <li>Built a business landing website with responsive frontend sections and a lightweight
+                        <strong>PHP</strong> backend.</li>
+                    <li>Integrated PHP for contact/enquiry form handling; handled ongoing refinements and maintenance.
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- ================= CERTIFICATIONS ================= -->
+        <section class="section">
+            <div class="section-title">Certifications</div>
+            <div class="cert-line">AWS Cloud Practitioner Essentials — Amazon Web Services (AWS) / NASSCOM</div>
+            <div class="cert-line">Employability Skills Certification — Edunet Foundation (Powered by Microsoft)</div>
+            <div class="cert-line">Computer Operator &amp; Programming Assistant (COPA) — Industrial Training Institute
+                (ITI), Pusa</div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>
